@@ -1,4 +1,4 @@
-Mercator's Gallery Extnesion for Pagekit - Based on Blueim
+Mercator's Gallery Extnesion for Pagekit - Based on Blueimp
 Copyright (C) 2018 Helmut Kaufmann (software@mercator.li)
 
 This program is free software: you can redistribute it and/or modify
@@ -21,7 +21,7 @@ To use this plugin within Pagekit:
 - Create a directory called "Images" within Storage.
 - For each slideshow you want to produce, create a directory within Images, e.g., show1.
 - To include a preview of your images onto your page, simply use (mercator_gallery){"dir":"show1"} .
-- The script will automatically produce a preview of the images. 
+- The script will automatically produce a preview of the images.
 
 Options (add after ""dir":"show1", eg. (mercator_gallery){"fullscreen":"false"}:
 - "mode":"carousel"		 ---	Do not show thumbnails but produce a Carousel (see Blueimp Gallery)
