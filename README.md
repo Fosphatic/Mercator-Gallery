@@ -1,4 +1,5 @@
 Mercator's Gallery Extension for Pagekit - Based on Blueimp Gallery
+
 Copyright (C) 2018 Helmut Kaufmann (software@mercator.li)
 
 This program is free software: you can redistribute it and/or modify
