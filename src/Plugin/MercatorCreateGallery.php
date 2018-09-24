@@ -164,9 +164,8 @@ EOT;
 ?>
 
 <script>
-<?php
-echo "document.getElementById('links_" . $ran . "').onclick = function (event) {";
-?>
+
+document.getElementById('links_<?php echo $ran;?>').onclick = function (event) {
 
     event = event || window.event;
     var target = event.target || event.srcElement,
