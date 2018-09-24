@@ -1,0 +1,9 @@
+{
+  "name": "mercator-gallery",
+  "scripts": {
+    "archive": "webpack -p && composer archive --format=zip"
+  },
+  "devDependencies": {
+    "webpack": "^1.12.9"
+  }
+}
