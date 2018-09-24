@@ -55,7 +55,6 @@ $pagekit_root = $_SERVER["DOCUMENT_ROOT"] . "/storage/Images/";
 
 $imageDir = $options['dir'] . "/";  // must end with a slash
 $thumbDir = $imageDir . "thumbs"; // must end with a slash
-$userOptions = $options['options'];
 
 
 $dir = new DirectoryIterator($pagekit_root .$imageDir);
@@ -77,6 +76,12 @@ foreach ($dir as $fileinfo) {
 }
 
 asort($FoundFiles, $sort_flag=SORT_NATURAL);
+
+
+if (isset($options['options']))
+	$myOptions=$options['options'];
+else
+	$myOptions="";
 
 if (isset($options['fullscreen']))
 	$fullScreen=$options['fullscreen'];
