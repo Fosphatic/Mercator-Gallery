@@ -126,7 +126,7 @@ EOT;
     		echo "<a href='storage/Images/" . $thumbDir . "-large/" . $res . "' title=''> </a>\n";
 
 		}
-		echo "</div></div></div>";
+		echo "</div></div></div></div>";
 		break;
 
 	case "default":
