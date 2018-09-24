@@ -1,15 +1,16 @@
 {
     "name": "mercator/gallery",
     "module": "mercator/gallery",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "type": "pagekit-extension",
     "title": "Mercator Gallery",
-    "description": "Mercator Gallery for Pagekit is a gallery extensions based on the Blueimp library. Usage: (mercator_gallery){'dir':<name of a directory withim Storage/Images>}).\n This will create a slideshow with all images in the directory ordered alphabetically.",
+    "description": "Mercator Gallery for Pagekit is a gallery extensions based on the Blueimp library. See the README at https://github.com/helmutkaufmann/Mercator-Gallery for details.",
     "license": "GPL 3",
     "authors": [
         {
             "name": "Helmut Kaufmann",
-            "homepage": "https://www.mercator.li"
+            "homepage": "https://www.mercator.li",
+            "email": "software@mercator.li"
         }
     ],
     "extra": {
