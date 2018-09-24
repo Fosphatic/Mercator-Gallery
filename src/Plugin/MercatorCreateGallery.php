@@ -17,17 +17,15 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
-    
-*/ 
+
+*/
 
 ?>
 
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/blueimp-gallery/2.33.0/css/blueimp-gallery.min.csss">
-<link rel="stylesheet" href="/packages/mercator/gallery/blueimp-gallery.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-gallery/2.33.0/js/blueimp-gallery.min.js"></script>
-<script src="/packages/mercator/gallery/slideset.min.js"></script>
+<link rel="stylesheet" href="/packages/mercator/gallery/assets/css/blueimp-gallery.css">
+<script src="/packages/mercator/gallery/assets/js/blueimp-gallery.min.js"></script>
 
 
 <?php
@@ -82,30 +80,30 @@ else
 
 if (isset($options['fullscreen']))
 	$fullScreen=$options['fullscreen'];
-	
+
 if (!isset($options['mode']))
 	$options['mode']="default";
-	
+
 if (!isset($options['position']))
 	$position="uk-width-1-2 uk-container-center";
 else
 	$position=$options['position'];
-	
+
 if (!isset($options['duration']))
 	$duration=3500;
 else
 	$duration=$options['duration'];
-	
+
 if (!isset($options['options']))
 	$myOptions="";
 else
 	$myOptions=$options['options'];
-	
-	
+
+
 switch ($options['mode']) {
 
 	case "carousel":
-		
+
 		echo "<div class=\"uk-grid\"><div class=\"$position\">";
 		echo '<div id="blueimp-gallery-carousel-' . $ran . '" class="blueimp-gallery blueimp-gallery-carousel">';
 		echo <<< EOT
@@ -119,21 +117,21 @@ switch ($options['mode']) {
 EOT;
 
 		echo ("<div id ='links_" . $ran . "'>");
-		foreach ($FoundFiles as $fileinfo) {	
-		
+		foreach ($FoundFiles as $fileinfo) {
+
 			$str = $fileinfo;
 			$pos = strrpos($str, "/") +1;
 			$res = substr($str, 0, $pos) . htmlentities(substr($str, $pos));
 
     		echo "<a href='storage/Images/" . $thumbDir . "-large/" . $res . "' title=''> </a>\n";
-    		
+
 		}
 		echo "</div></div></div>";
 		break;
 
 	case "default":
 	default:
-		
+
 		echo '<div id="blueimp-gallery_' . $ran . '" class="blueimp-gallery blueimp-gallery-controls" >';
 		echo <<< EOT
     	<div class="slides"></div>
@@ -148,8 +146,8 @@ EOT;
 
 		echo ("<div id ='links_" . $ran . "' >");
 
-		foreach ($FoundFiles as $fileinfo) {	
-		
+		foreach ($FoundFiles as $fileinfo) {
+
 			$str = $fileinfo;
 			$pos = strrpos($str, "/") +1;
 			$res = substr($str, 0, $pos) . htmlentities(substr($str, $pos));
@@ -160,7 +158,7 @@ EOT;
     		echo "</a>";
 		}
 		echo "</div></div>";
-		
+
 
 }
 ?>
@@ -169,7 +167,7 @@ EOT;
 <?php
 echo "document.getElementById('links_" . $ran . "').onclick = function (event) {";
 ?>
-	
+
     event = event || window.event;
     var target = event.target || event.srcElement,
         link = target.src ? target.parentNode : target,
@@ -187,10 +185,8 @@ blueimp.Gallery(
    	 	disableScroll: false,
    	 	startSlideshow: true,
    	 	hidePageScrollbars: true,
-   	 	
+
 		<?php echo $myOptions;?>
     }
 );
 </script>
-<script src="js/blueimp-gallery.min.js"></script>
-
