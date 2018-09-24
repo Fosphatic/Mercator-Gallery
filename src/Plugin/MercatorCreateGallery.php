@@ -56,9 +56,7 @@ $pagekit_root = $_SERVER["DOCUMENT_ROOT"] . "/storage/Images/";
 $imageDir = $options['dir'] . "/";  // must end with a slash
 $thumbDir = $imageDir . "thumbs"; // must end with a slash
 
-
 $dir = new DirectoryIterator($pagekit_root .$imageDir);
-
 @mkdir ($pagekit_root . $thumbDir);
 @mkdir ($pagekit_root . $thumbDir . "-large/");
 
@@ -66,7 +64,6 @@ $FoundFiles = array();
 
 foreach ($dir as $fileinfo) {
     if ($fileinfo->isFile() && !$fileinfo->isDot()) {
-        
 		if (!file_exists($pagekit_root . $thumbDir . "/". $fileinfo->getFilename())) {
 			resize_image($pagekit_root . $imageDir . "/" . $fileinfo->getFilename(),  $pagekit_root .$thumbDir ."-large/" . $fileinfo->getFilename(), $imageSize, $imageSize, $jpgQuality, null);
 			resize_thumb($pagekit_root . $imageDir . "/" .$fileinfo->getFilename(),  $pagekit_root . $thumbDir . "/" . $fileinfo->getFilename(), $thumbWidth, $thumbWidth, $jpgQuality,null);
