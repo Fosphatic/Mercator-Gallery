@@ -58,7 +58,7 @@ $thumbDir = $imageDir . "thumbs"; // must end with a slash
 
 
 $dir = new DirectoryIterator($pagekit_root .$imageDir);
-asort( $dir, $sort_flags = SORT_REGULAR  );
+
 @mkdir ($pagekit_root . $thumbDir);
 @mkdir ($pagekit_root . $thumbDir . "-large/");
 
