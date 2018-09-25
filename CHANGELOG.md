@@ -2,6 +2,11 @@
 
 ## 1.0.5 (September 25, 2018)
 
+### Add
+- German translation of the settings menu
+
+## 1.0.5 (September 25, 2018)
+
 ### Changes
 - Changed the settings behaviour to seperate inline tabs
 - Advanced options in a seprate tab with nice table and prepartion for translating options as descriptions made too
