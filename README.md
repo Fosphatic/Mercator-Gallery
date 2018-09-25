@@ -28,3 +28,6 @@ Options (add after ""dir":"show1", eg. (mercator_gallery){"fullscreen":"false"}:
 - "duration":"300"		 ---	Change the duration (in ms) each image is shown, e.g., 300ms
 - "fullscreen":"false"	 --- 	When clicking on thumbs, a slideshow will start. By default it starts fullscreen. When set to false, the show will run in the current window.
 - "postion":"uk-width-1-2 uk-container-center" --- When using a carousel, you can use and UIKit width statement to determine the and positioning of the carousel. If not specified, it is uk-width-1-2 uk-container-center
+
+
+A special "thank you" to Sven Suchan, who has been instrumental in getting this into the Pagekit Marketplace.

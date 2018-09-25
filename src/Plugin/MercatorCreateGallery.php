@@ -33,6 +33,12 @@ require_once('MercatorGalleryHelper.php');
 
 $pagekit_root = $_SERVER["DOCUMENT_ROOT"] . "/storage/Images/";
 
+if (!isset($options['dir'])) {
+	echo ("Error: You must set the 'dir' option in the mercator_gallery plugin");
+	return 0;
+};
+	
+
 $imageDir = $options['dir'] . "/";  // must end with a slash
 $thumbDir = $imageDir . "thumbs"; // must end with a slash
 
