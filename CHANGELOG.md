@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.0.5 (September 25, 2018)
+## 1.0.6 (September 25, 2018)
 
 ### Add
 - German translation of the settings menu
