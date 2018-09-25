@@ -33,13 +33,6 @@ require_once('MercatorGalleryHelper.php');
 
 $pagekit_root = $_SERVER["DOCUMENT_ROOT"] . "/storage/Images/";
 
-
-
-$ran=mt_rand();
-require_once('MercatorGalleryHelper.php');
-
-$pagekit_root = $_SERVER["DOCUMENT_ROOT"] . "/storage/Images/";
-
 $imageDir = $options['dir'] . "/";  // must end with a slash
 $thumbDir = $imageDir . "thumbs"; // must end with a slash
 
