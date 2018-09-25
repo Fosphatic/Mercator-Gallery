@@ -20,15 +20,6 @@
 
 */
 
-?>
-
-
-
-
-
-<?php
-
-
 // Slideshow default values
 $imageSize = 2000;    			// Maximum width or height of the resized image
 $thumbWidth = 128;    			// Size of a thumbnail
