@@ -20,6 +20,14 @@
 
 */
 
+// The following .js and .css in the <script> and <link> should be incldued in the header.
+// This is currently not working and the following two lines are incldued till teh problem
+// has been resolved.
+?>
+
+<script src="/packages/mercator/gallery/assets/js/blueimp-gallery.min.js"></script>
+<link rel="stylesheet" href="/packages/mercator/gallery/assets/css/blueimp-gallery.css">
+
 // Slideshow default values
 $imageSize = 2000;    			// Maximum width or height of the resized image
 $thumbWidth = 128;    			// Size of a thumbnail
