@@ -20,13 +20,12 @@
 
 */
 
-// The following .js and .css in the <script> and <link> should be incldued in the header.
-// This is currently not working and the following two lines are incldued till teh problem
+// The following .js in the <script> should be incldued in the header.
+// This is currently not working and the following two lines are incldued till the problem
 // has been resolved.
 ?>
 
 <script src="/packages/mercator/gallery/assets/js/blueimp-gallery.min.js"></script>
-<link rel="stylesheet" href="/packages/mercator/gallery/assets/css/blueimp-gallery.css">
 
 <?php
 
