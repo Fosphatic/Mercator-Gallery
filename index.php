@@ -17,23 +17,33 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
-    
-*/ 
+
+*/
 
 return [
-    
+
     'name' => 'mercator/gallery',
-    
+
     'type' => 'extension',
-    
+
     'main' => function ($app) {
         $app->subscribe(new mercator\gallery\Plugin\MercatorGallery()); // Subscribe the plugin class.
     },
-    
+
     'autoload' => [
         'mercator\\gallery\\' => 'src'
-    ]
-    
+    ],
+
+    'events' => [
+
+      'site' => function ($event, $app) {
+            $app->on('view.content', function ($event, $test) use ($app) {
+            $app['scripts']->add('mercator-js' , 'mercator/gallery:assets/js/blueimp-gallery.min.js' , ['jquery']);
+            $app['styles']->add('mercator-css' , 'mercator/gallery:assets/css/blueimp-gallery.css');
+            });
+      }
+   ]
+
 ];
 
 ?>

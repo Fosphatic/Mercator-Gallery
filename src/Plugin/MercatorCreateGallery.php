@@ -23,8 +23,7 @@
 ?>
 
 
-<script src="/packages/mercator/gallery/assets/js/blueimp-gallery.min.js"></script>
-<link rel="stylesheet" href="/packages/mercator/gallery/assets/css/blueimp-gallery.css">
+
 
 
 <?php
@@ -170,7 +169,7 @@ document.getElementById('links_<?php echo $ran;?>').onclick = function (event) {
     blueimp.Gallery(links, options);
 };
 
-blueimp.Gallery(document.getElementById('links_<?php echo $ran;?>').getElementsByTagName('a'), 
+blueimp.Gallery(document.getElementById('links_<?php echo $ran;?>').getElementsByTagName('a'),
 	{
 		container: '#blueimp-gallery-carousel-<?php echo $ran;?>',
         carousel: true,
