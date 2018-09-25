@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.0.4 (September 25, 2018)
+
+### Add
+- Added an app icon and general settings for the widget (without function actually)
+- Added general usage information in the settings menu of the extension
+
+## 1.0.3 (September 25, 2018)
+
+### Changes
+- Changed the way script as css is loaded (in the header section instead in the body section)
+
+## 1.0.2 (September 24, 2018)
+
+### Changes
+- (Changes from Helmut should be described here :)
+
 ## 1.0.1 (September 24, 2018)
 
 ### Changes

@@ -1,7 +1,7 @@
 <?php
 
 /*
-    
+
     Mercator's Gallery Extnesion for Pagekit
     Copyright (C) 2018 Helmut Kaufmann
 
@@ -23,15 +23,44 @@
 return [
 
     'name' => 'mercator/gallery',
-
     'type' => 'extension',
-
     'main' => function ($app) {
         $app->subscribe(new mercator\gallery\Plugin\MercatorGallery()); // Subscribe the plugin class.
     },
 
     'autoload' => [
         'mercator\\gallery\\' => 'src'
+    ],
+
+    'routes'  => [
+        '/gallery'     => [
+            'name'       => '@gallery',
+            'controller' => [
+                'mercator\\gallery\\Controller\\MercatorController'
+            ]
+        ]
+    ],
+
+    'widgets' => [],
+
+    'menu'        => [
+          'gallery: settings' => [
+              'label'  => 'Gallery',
+              'url'    => '@gallery/settings',
+              'icon'   => 'mercator/gallery:icon.svg',
+              'access' => 'gallery: manage settings'
+          ]
+    ],
+    'permissions' => [
+        'gallery: manage settings' => [
+            'title' => 'Manage settings'
+        ]
+    ],
+
+    'settings' => '@gallery/settings',
+
+    'resources' => [
+        'mercator/gallery:' => ''
     ],
 
     'events' => [
