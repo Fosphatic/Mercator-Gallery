@@ -1,7 +1,7 @@
 {
     "name": "mercator/gallery",
     "module": "mercator/gallery",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "type": "pagekit-extension",
     "title": "Mercator Gallery",
     "description": "Mercator Gallery for Pagekit is a gallery extensions based on the Blueimp library. See the README at https://github.com/helmutkaufmann/Mercator-Gallery for details.",
