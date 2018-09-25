@@ -1,4 +1,4 @@
-Mercator's Gallery Extension for Pagekit - Based on Blueimp Gallery
+Mercator Gallery Extension for Pagekit
 
 Copyright (C) 2018 Helmut Kaufmann (software@mercator.li)
 
@@ -15,8 +15,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-This is a slideshow plugin for Pagekit, based on the Blueimp library provided  
-by Sebastian Tschann (https://github.com/blueimp/).
+This plugin uses the Blueimp library provided by Sebastian Tschann (https://github.com/blueimp/).
 
 To use this plugin within Pagekit:
 - Create a directory called "Images" within Storage.
