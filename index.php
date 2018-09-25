@@ -1,8 +1,8 @@
 <?php
 
 /*
-
-	Mercator's Gallery Extnesion for Pagekit
+    
+    Mercator's Gallery Extnesion for Pagekit
     Copyright (C) 2018 Helmut Kaufmann
 
     This program is free software: you can redistribute it and/or modify
