@@ -2,7 +2,7 @@
 
 /*
 
-	Mercator's Gallery Extnesion for Pagekit - Based on Blueim
+	Mercator Gallery Extension for Pagekit
     Copyright (C) 2018 Helmut Kaufmann
 
     This program is free software: you can redistribute it and/or modify

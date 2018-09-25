@@ -2,7 +2,7 @@
 
 /*
 
-	Mercator's Gallery Extnesion for Pagekit - Based on Blueim
+	Mercator Gallery Extension for Pagekit
     Copyright (C) 2018 Helmut Kaufmann
 
     This program is free software: you can redistribute it and/or modify
@@ -23,9 +23,8 @@
 ?>
 
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-<link rel="stylesheet" href="/packages/mercator/gallery/assets/css/blueimp-gallery.css">
 <script src="/packages/mercator/gallery/assets/js/blueimp-gallery.min.js"></script>
+<link rel="stylesheet" href="/packages/mercator/gallery/assets/css/blueimp-gallery.css">
 
 
 <?php
@@ -104,8 +103,8 @@ switch ($options['mode']) {
 
 	case "carousel":
 
-		echo "<div class=\"uk-grid\"><div class=\"$position\">";
-		echo '<div id="blueimp-gallery-carousel-' . $ran . '" class="blueimp-gallery blueimp-gallery-carousel">';
+		echo "<div class='uk-grid'><div class='$position'>";
+		echo "<div id='blueimp-gallery-carousel-$ran' class='blueimp-gallery blueimp-gallery-carousel'>";
 		echo <<< EOT
     	<div class="slides"></div>
    		<h3 class="title"></h3>
@@ -123,16 +122,16 @@ EOT;
 			$pos = strrpos($str, "/") +1;
 			$res = substr($str, 0, $pos) . htmlentities(substr($str, $pos));
 
-    		echo "<a href='storage/Images/" . $thumbDir . "-large/" . $res . "' title=''> </a>\n";
+    		echo "<a href='storage/Images/$thumbDir-large/$res'></a>\n";
 
 		}
-		echo "</div></div></div>";
+		echo "</div></div></div></div>";
 		break;
 
 	case "default":
 	default:
 
-		echo '<div id="blueimp-gallery_' . $ran . '" class="blueimp-gallery blueimp-gallery-controls" >';
+		echo "<div id='blueimp-gallery_$ran' class='blueimp-gallery blueimp-gallery-controls'>";
 		echo <<< EOT
     	<div class="slides"></div>
    		<h3 class="title"></h3>
@@ -144,7 +143,7 @@ EOT;
 		</div>
 EOT;
 
-		echo ("<div id ='links_" . $ran . "' >");
+		echo ("<div id ='links_$ran'>");
 
 		foreach ($FoundFiles as $fileinfo) {
 
@@ -152,41 +151,33 @@ EOT;
 			$pos = strrpos($str, "/") +1;
 			$res = substr($str, 0, $pos) . htmlentities(substr($str, $pos));
 
-    		echo "<a href='storage/Images/" . $thumbDir . "-large/" . $res . "' title=''>\n";
-    		// echo "<img src='storage/Images/" . $thumbDir . "/". $res  . "' uk-img-preserve class=\"uk-thumbnail uk-thumbnail-mini\" alt='' >\n";
-    		echo "<img src='storage/Images/" . $thumbDir . "/". $res  . "' alt=\"\">\n";
+    		echo "<a href='storage/Images/$thumbDir-large/$res'>\n";
+    		echo "<img src='storage/Images/$thumbDir/$res'>\n";
     		echo "</a>";
 		}
 		echo "</div></div>";
-
-
 }
 ?>
 
 <script>
-<?php
-echo "document.getElementById('links_" . $ran . "').onclick = function (event) {";
-?>
 
-    event = event || window.event;
+document.getElementById('links_<?php echo $ran;?>').onclick = function (event) {
+   	event = event || window.event;
     var target = event.target || event.srcElement,
-        link = target.src ? target.parentNode : target,
-        options = {index: link, event: event, startSlideshow: <?php echo $startSlideshow; ?>, slideshowInterval: <?php echo $slideShowInterval; ?>, fullScreen: <?php echo $fullScreen; ?>, container: '#blueimp-gallery_<?php echo ($ran); ?>', <?php echo $myOptions; ?>},
-        links = this.getElementsByTagName('a');
+    link = target.src ? target.parentNode : target,
+    options = {index: link, event: event, startSlideshow: <?php echo $startSlideshow; ?>, slideshowInterval: <?php echo $slideShowInterval; ?>, fullScreen: <?php echo $fullScreen; ?>, container: '#blueimp-gallery_<?php echo ($ran); ?>', <?php echo $myOptions; ?>},
+    links = this.getElementsByTagName('a');
     blueimp.Gallery(links, options);
 };
 
-blueimp.Gallery(
-    document.getElementById('links_<?php echo $ran;?>').getElementsByTagName('a'),
-    {
-        container: '#blueimp-gallery-carousel-<?php echo $ran;?>',
+blueimp.Gallery(document.getElementById('links_<?php echo $ran;?>').getElementsByTagName('a'), 
+	{
+		container: '#blueimp-gallery-carousel-<?php echo $ran;?>',
         carousel: true,
         slideshowInterval: <?php echo $duration; ?>,
    	 	disableScroll: false,
    	 	startSlideshow: true,
-   	 	hidePageScrollbars: true,
-
-		<?php echo $myOptions;?>
-    }
+   	 	hidePageScrollbars: true
+	}
 );
 </script>
