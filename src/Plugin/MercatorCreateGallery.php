@@ -2,7 +2,7 @@
 
 /*
 
-	Mercator Gallery Extension for Pagekit
+    Mercator Gallery Extension for Pagekit
     Copyright (C) 2018 Helmut Kaufmann
 
     This program is free software: you can redistribute it and/or modify
@@ -20,16 +20,6 @@
 
 */
 
-?>
-
-
-<script src="/packages/mercator/gallery/assets/js/blueimp-gallery.min.js"></script>
-<link rel="stylesheet" href="/packages/mercator/gallery/assets/css/blueimp-gallery.css">
-
-
-<?php
-
-
 // Slideshow default values
 $imageSize = 2000;    			// Maximum width or height of the resized image
 $thumbWidth = 128;    			// Size of a thumbnail
@@ -37,13 +27,6 @@ $jpgQuality = 70;				// Thumbnail compression level
 $slideShowInterval = 3500;		// Duration a slide is shown (ms)
 $startSlideshow = "true";		// Automatically start slideshow
 $fullScreen= "true" ;			// Present sldieshow in fullscreen mode
-
-$ran=mt_rand();
-require_once('MercatorGalleryHelper.php');
-
-$pagekit_root = $_SERVER["DOCUMENT_ROOT"] . "/storage/Images/";
-
-
 
 $ran=mt_rand();
 require_once('MercatorGalleryHelper.php');
@@ -170,7 +153,7 @@ document.getElementById('links_<?php echo $ran;?>').onclick = function (event) {
     blueimp.Gallery(links, options);
 };
 
-blueimp.Gallery(document.getElementById('links_<?php echo $ran;?>').getElementsByTagName('a'), 
+blueimp.Gallery(document.getElementById('links_<?php echo $ran;?>').getElementsByTagName('a'),
 	{
 		container: '#blueimp-gallery-carousel-<?php echo $ran;?>',
         carousel: true,
