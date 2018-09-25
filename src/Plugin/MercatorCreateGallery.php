@@ -2,7 +2,7 @@
 
 /*
 
-	Mercator Gallery Extension for Pagekit
+    Mercator Gallery Extension for Pagekit
     Copyright (C) 2018 Helmut Kaufmann
 
     This program is free software: you can redistribute it and/or modify
