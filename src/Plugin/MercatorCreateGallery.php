@@ -99,7 +99,7 @@ switch ($options['mode']) {
 
 	case "carousel":
 
-		echo "<div class='uk-grid'><div class='$position'>";
+		echo "<div class='$position'>";
 			echo "<div id='blueimp-gallery-carousel-$ran' class='blueimp-gallery blueimp-gallery-carousel'>";
 				echo <<< EOT
     			<div class="slides"></div>
@@ -121,7 +121,7 @@ EOT;
     		echo "<a href='storage/Images/$thumbDir-large/$res'></a>\n";
 
 		}
-		echo "</div></div></div>";
+		echo "</div></div>";
 		break;
 
 	case "default":
@@ -169,11 +169,17 @@ document.getElementById('links_<?php echo $ran;?>').onclick = function (event) {
 blueimp.Gallery(document.getElementById('links_<?php echo $ran;?>').getElementsByTagName('a'),
 	{
 		container: '#blueimp-gallery-carousel-<?php echo $ran;?>',
-        carousel: true,
-        slideshowInterval: <?php echo $duration; ?>,
-   	 	disableScroll: false,
-   	 	startSlideshow: true,
-   	 	hidePageScrollbars: true
+		carousel: true,
+        hidePageScrollbars: false,
+    	toggleControlsOnReturn: false,
+   		toggleSlideshowOnSpace: false,
+    	enableKeyboardNavigation: false,
+    	closeOnEscape: false,
+    	closeOnSlideClick: false,
+    	closeOnSwipeUpOrDown: false,
+    	disableScroll: false,
+    	startSlideshow: true,
+        slideshowInterval: <?php echo $duration; ?>
 	}
 );
 </script>
