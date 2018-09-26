@@ -24,7 +24,12 @@
 // This is currently not working and the following line is incldued till the problem has been resolved.
 ?>
 
-<script src="/packages/mercator/gallery/assets/js/blueimp-gallery.min.js"></script>
+<script src="/packages/mercator/gallery/assets/js/blueimp-helper.js"></script>
+<script src="/packages/mercator/gallery/assets/js/blueimp-gallery.js"></script>
+<script src="/packages/mercator/gallery/assets/js/blueimp-gallery-fullscreen.js"></script>
+<script src="/packages/mercator/gallery/assets/js/blueimp-gallery-indicator.js"></script>
+<script src="/packages/mercator/gallery/assets/js/jquery.js"></script>
+<script src="/packages/mercator/gallery/assets/js/jquery.blueimp-gallery.js"></script>
 
 <?php
 
@@ -45,7 +50,7 @@ if (!isset($options['dir'])) {
 	echo ("Oups: You must set the 'dir' option in the mercator_gallery plugin");
 	return 0;
 };
-	
+
 $imageDir = $options['dir'] . "/";  // must end with a slash
 $thumbDir = $imageDir . "thumbs"; // must end with a slash
 

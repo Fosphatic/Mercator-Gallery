@@ -29,22 +29,22 @@ function resize_image($src , $dest , $toWidth , $toHeight , $jpgQuality, $option
 	}
 	
 	//OPEN THE IMAGE INTO A RESOURCE
-	$img = imagecreatefromjpeg ($src);	//try jpg
+	$img = @imagecreatefromjpeg ($src);	//try jpg
 	
 	if(!$img)
 	{
-		$img = imagecreatefromgif ($src);	//try gif
+		$img = @imagecreatefromgif ($src);	//try gif
 	}
 	
 	if(!$img)
 	{
-		$img = imagecreatefrompng ($src);	//try png
+		$img = @imagecreatefrompng ($src);	//try png
 	}
 	
 	if(!$img)
 	{
 		return false;
-		die("Could Not create image resource $src");
+		die("Could not create image resource $src");
 	}
 	
 	//ORIGINAL DIMENTIONS
@@ -100,22 +100,22 @@ function resize_thumb($src , $dest , $toWidth , $toHeight , $jpgQuality, $option
 	}
 	
 	//OPEN THE IMAGE INTO A RESOURCE
-	$img = imagecreatefromjpeg ($src);	//try jpg
+	$img = @imagecreatefromjpeg ($src);	//try jpg
 	
 	if(!$img)
 	{
-		$img = imagecreatefromgif ($src);	//try gif
+		$img = @imagecreatefromgif ($src);	//try gif
 	}
 	
 	if(!$img)
 	{
-		$img = imagecreatefrompng ($src);	//try png
+		$img = @imagecreatefrompng ($src);	//try png
 	}
 	
 	if(!$img)
 	{
 		return false;
-		die("Could Not create image resource $src");
+		die("Could not create image resource $src");
 	}
 	
 	//ORIGINAL DIMENTIONS
