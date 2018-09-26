@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.0.8 (September 26, 2018)
+
+### Add
+- Persian tranlsation added, thanks to abdul for providing the translation file
+
+## 1.0.7 (September 26, 2018)
+
+### Changes
+- Added loading of blueimp-gallery.min.js back to MercatorCreateGallery till loading challenges have been resolved
+
 ## 1.0.6 (September 25, 2018)
 
 ### Add
