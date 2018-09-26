@@ -5,9 +5,6 @@ gallery/src/Plugin/.DS_Store
 .DS_Store
 gallery.zip
 Archive.zip
-<<<<<<< HEAD
 *.zip
-=======
 node_modules/
 node_modules/*
->>>>>>> 830eeb0e593cd4125601596051bf04aaf3af5dc9
