@@ -11,6 +11,7 @@
 			</div>
 
 		</div>
+
 		<div class="pk-width-content">
 			<ul id="tab-content" class="uk-switcher uk-margin">
 				<li>
@@ -93,8 +94,10 @@
 									</tbody>
 								 </table>
 							 </div>
+
 						</div>
 					</div>
+
 				</li>
 			</ul>
 		</div>

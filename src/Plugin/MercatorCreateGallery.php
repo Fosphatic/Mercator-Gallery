@@ -20,6 +20,14 @@
 
 */
 
+// The following .js in the <script> should be incldued in the header.
+// This is currently not working and the following line is incldued till the problem has been resolved.
+?>
+
+<script src="/packages/mercator/gallery/assets/js/blueimp-gallery.min.js"></script>
+
+<?php
+
 // Slideshow default values
 $imageSize = 2000;    			// Maximum width or height of the resized image
 $thumbWidth = 128;    			// Size of a thumbnail
@@ -34,11 +42,10 @@ require_once('MercatorGalleryHelper.php');
 $pagekit_root = $_SERVER["DOCUMENT_ROOT"] . "/storage/Images/";
 
 if (!isset($options['dir'])) {
-	echo ("Error: You must set the 'dir' option in the mercator_gallery plugin");
+	echo ("Oups: You must set the 'dir' option in the mercator_gallery plugin");
 	return 0;
 };
 	
-
 $imageDir = $options['dir'] . "/";  // must end with a slash
 $thumbDir = $imageDir . "thumbs"; // must end with a slash
 
@@ -92,16 +99,16 @@ switch ($options['mode']) {
 
 	case "carousel":
 
-		echo "<div class='uk-grid'><div class='$position'>";
-		echo "<div id='blueimp-gallery-carousel-$ran' class='blueimp-gallery blueimp-gallery-carousel'>";
-		echo <<< EOT
-    	<div class="slides"></div>
-   		<h3 class="title"></h3>
-    	<a class="prev">‹</a>
-    	<a class="next">›</a>
-    	<a class="play-pause"></a>
-    	<ol class="indicator" hidden></ol>
-		</div>
+		echo "<div class='$position'>";
+			echo "<div id='blueimp-gallery-carousel-$ran' class='blueimp-gallery blueimp-gallery-carousel'>";
+				echo <<< EOT
+    			<div class="slides"></div>
+   				<h3 class="title"></h3>
+    			<a class="prev">‹</a>
+    			<a class="next">›</a>
+    			<a class="play-pause"></a>
+    			<ol class="indicator" hidden></ol>
+			</div>
 EOT;
 
 		echo ("<div id ='links_" . $ran . "'>");
@@ -114,7 +121,7 @@ EOT;
     		echo "<a href='storage/Images/$thumbDir-large/$res'></a>\n";
 
 		}
-		echo "</div></div></div></div>";
+		echo "</div></div>";
 		break;
 
 	case "default":
@@ -122,13 +129,13 @@ EOT;
 
 		echo "<div id='blueimp-gallery_$ran' class='blueimp-gallery blueimp-gallery-controls'>";
 		echo <<< EOT
-    	<div class="slides"></div>
-   		<h3 class="title"></h3>
-    	<a class="prev">‹</a>
-    	<a class="next">›</a>
-    	<a class="close">×</a>
-    	<a class="play-pause"></a>
-    	<ol class="indicator"></ol>
+    		<div class="slides"></div>
+   			<h3 class="title"></h3>
+    		<a class="prev">‹</a>
+    		<a class="next">›</a>
+    		<a class="close">×</a>
+    		<a class="play-pause"></a>
+    		<ol class="indicator"></ol>
 		</div>
 EOT;
 
@@ -144,7 +151,7 @@ EOT;
     		echo "<img src='storage/Images/$thumbDir/$res'>\n";
     		echo "</a>";
 		}
-		echo "</div></div>";
+		echo "</div>";
 }
 ?>
 
@@ -162,11 +169,17 @@ document.getElementById('links_<?php echo $ran;?>').onclick = function (event) {
 blueimp.Gallery(document.getElementById('links_<?php echo $ran;?>').getElementsByTagName('a'),
 	{
 		container: '#blueimp-gallery-carousel-<?php echo $ran;?>',
-        carousel: true,
-        slideshowInterval: <?php echo $duration; ?>,
-   	 	disableScroll: false,
-   	 	startSlideshow: true,
-   	 	hidePageScrollbars: true
+		carousel: true,
+        hidePageScrollbars: false,
+    	toggleControlsOnReturn: false,
+   		toggleSlideshowOnSpace: false,
+    	enableKeyboardNavigation: false,
+    	closeOnEscape: false,
+    	closeOnSlideClick: false,
+    	closeOnSwipeUpOrDown: false,
+    	disableScroll: false,
+    	startSlideshow: true,
+        slideshowInterval: <?php echo $duration; ?>
 	}
 );
 </script>
