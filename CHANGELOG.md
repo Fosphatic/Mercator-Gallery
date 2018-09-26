@@ -1,5 +1,13 @@
 # Changelog
 
+<<<<<<< HEAD
+=======
+## 1.0.8 (September 26, 2018)
+
+### Add
+- Persian tranlsation added, thanks to abdul for providing the translation file
+
+>>>>>>> 830eeb0e593cd4125601596051bf04aaf3af5dc9
 ## 1.0.7 (September 26, 2018)
 
 ### Changes
