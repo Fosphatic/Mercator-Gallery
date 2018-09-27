@@ -4,10 +4,14 @@
 
 ## 1.0.12 (September 26, 2018)
 
+### Changes
+- Moved to UIKit3
+
 ### Add
 - Thumbsnails now square. Size can be specified . Use option "thumbsize":"64" to set it to 64px. 
   Default is 80px. Note: If you use the SAME gallery multiple times, specify the same size as
   the systems only keeps one set of thumbnails.
+  
 
 ## 1.0.11 (September 26, 2018)
 
