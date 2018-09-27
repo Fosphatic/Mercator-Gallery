@@ -28,9 +28,10 @@
 <script src="/packages/mercator/gallery/assets/js/blueimp-gallery.js"></script>
 <script src="/packages/mercator/gallery/assets/js/blueimp-gallery-fullscreen.js"></script>
 <script src="/packages/mercator/gallery/assets/js/blueimp-gallery-indicator.js"></script>
-<link rel="stylesheet" href="/packages/mercator/gallery/assets/css/uikit.min.css">
-<script src="/packages/mercator/gallery/assets/js/uikit.min.js"></script>
-<script src="/packages/mercator/gallery/assets/js/uikit-icons.js"></script>
+<link rel="stylesheet" href="/packages/mercator/gallery/assets/css/animation.css">
+<link rel="stylesheet" href="/packages/mercator/gallery/assets/css/grid.css">
+<script src="/packages/mercator/gallery/assets/js/grid.js"></script>
+<script src="/packages/mercator/gallery/assets/js/animation.js"></script>
 
 
 <?php
@@ -164,7 +165,7 @@ EOT;
 			echo '<olno class="indicator"></olno>';
 		echo "</div>";
 
-		echo ("<div id ='links_$ran' class='uk-grid-small uk-width-auto@m uk-scrollspy-inview uk-animation-scale-up' data-uk-grid>");
+		echo ("<div id ='links_$ran' class='uk-grid-small uk-margin uk-animation-scale-up uk-grid' uk-grid='masonry: true; parallax: 150' data-uk-grid-margin>");
 
 		foreach ($FoundFiles as $fileinfo) {
 
