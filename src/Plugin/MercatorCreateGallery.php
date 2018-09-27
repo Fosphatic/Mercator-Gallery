@@ -28,6 +28,9 @@
 <script src="/packages/mercator/gallery/assets/js/blueimp-gallery.js"></script>
 <script src="/packages/mercator/gallery/assets/js/blueimp-gallery-fullscreen.js"></script>
 <script src="/packages/mercator/gallery/assets/js/blueimp-gallery-indicator.js"></script>
+<link rel="stylesheet" href="/packages/mercator/gallery/assets/css/uikit.min.css">
+<script src="/packages/mercator/gallery/assets/js/uikit.min.js"></script>
+<script src="/packages/mercator/gallery/assets/js/uikit-icons.js"></script>
 
 
 <?php
@@ -78,14 +81,14 @@ if (!isset($options['options']))
 	$myOptions="";
 else
 	$myOptions=$options['options'];
-	
+
 if (isset($options['indicators']))
 	$indicators=$options['indicators'];
-	
+
 if (isset($options['thumbsize']))
 	$thumbWidth=$options['thumbsize'];
-	
-	
+
+
 $imageDir = $options['dir'] . "/";  // must end with a slash
 $resizeDir = $options['dir'] . "/thumbs-$imageSize/";  // must end with a slash
 $thumbDir = $imageDir . "thumbs-$thumbWidth/"; // must end with a slash
@@ -93,7 +96,7 @@ $thumbDir = $imageDir . "thumbs-$thumbWidth/"; // must end with a slash
 // Remove thumbails if size has changed
 if (!is_dir($pagekit_root . $thumbDir) || !is_dir($pagekit_root . $resizeDir))
 	deleteThumbnails($pagekit_root . $options['dir']);
-	
+
 $dir = new DirectoryIterator($pagekit_root .$imageDir);
 @mkdir ($pagekit_root . $thumbDir);
 @mkdir ($pagekit_root . $resizeDir);
@@ -151,7 +154,7 @@ EOT;
    			<h3 class="title"></h3>
     		<a class="prev">‹</a>
     		<a class="next">›</a>
-    		<a class="close">×</a>
+    		<a class="close"></a>
     		<a class="play-pause"></a>
 EOT;
 
@@ -161,7 +164,7 @@ EOT;
 			echo '<olno class="indicator"></olno>';
 		echo "</div>";
 
-		echo ("<div id ='links_$ran'>");
+		echo ("<div id ='links_$ran' class='uk-grid-small uk-width-auto@m uk-scrollspy-inview uk-animation-scale-up' data-uk-grid>");
 
 		foreach ($FoundFiles as $fileinfo) {
 
@@ -177,9 +180,9 @@ EOT;
 };
 
 // Disable fullscreen for Chrome
-if (strpos($_SERVER['HTTP_USER_AGENT'], 'Chrome') !== FALSE || strpos($_SERVER['HTTP_USER_AGENT'], 'CriOS') !== false) 
+if (strpos($_SERVER['HTTP_USER_AGENT'], 'Chrome') !== FALSE || strpos($_SERVER['HTTP_USER_AGENT'], 'CriOS') !== false)
 	$fullScreen="false";
-	
+
 ?>
 
 <script>
