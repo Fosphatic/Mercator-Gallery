@@ -28,18 +28,18 @@
 <script src="/packages/mercator/gallery/assets/js/blueimp-gallery.js"></script>
 <script src="/packages/mercator/gallery/assets/js/blueimp-gallery-fullscreen.js"></script>
 <script src="/packages/mercator/gallery/assets/js/blueimp-gallery-indicator.js"></script>
-<script src="/packages/mercator/gallery/assets/js/jquery.js"></script>
-<script src="/packages/mercator/gallery/assets/js/jquery.blueimp-gallery.js"></script>
+
 
 <?php
 
 // Slideshow default values
 $imageSize = 2000;    			// Maximum width or height of the resized image
-$thumbWidth = 128;    			// Size of a thumbnail
+$thumbWidth = 100;    			// Size of a thumbnail
 $jpgQuality = 70;				// Thumbnail compression level
 $slideShowInterval = 3500;		// Duration a slide is shown (ms)
 $startSlideshow = "true";		// Automatically start slideshow
 $fullScreen= "true" ;			// Present sldieshow in fullscreen mode
+$indicators = "true";
 
 $ran=mt_rand();
 require_once('MercatorGalleryHelper.php');
@@ -51,28 +51,8 @@ if (!isset($options['dir'])) {
 	return 0;
 };
 
-$imageDir = $options['dir'] . "/";  // must end with a slash
-$thumbDir = $imageDir . "thumbs"; // must end with a slash
 
-$dir = new DirectoryIterator($pagekit_root .$imageDir);
-@mkdir ($pagekit_root . $thumbDir);
-@mkdir ($pagekit_root . $thumbDir . "-large/");
-
-$FoundFiles = array();
-
-foreach ($dir as $fileinfo) {
-    if ($fileinfo->isFile() && !$fileinfo->isDot()) {
-		if (!file_exists($pagekit_root . $thumbDir . "/". $fileinfo->getFilename())) {
-			resize_image($pagekit_root . $imageDir . "/" . $fileinfo->getFilename(),  $pagekit_root .$thumbDir ."-large/" . $fileinfo->getFilename(), $imageSize, $imageSize, $jpgQuality, null);
-			resize_thumb($pagekit_root . $imageDir . "/" .$fileinfo->getFilename(),  $pagekit_root . $thumbDir . "/" . $fileinfo->getFilename(), $thumbWidth, $thumbWidth, $jpgQuality,null);
-		}
-		$FoundFiles[] = $fileinfo->getFilename();
-	}
-}
-
-asort($FoundFiles, $sort_flag=SORT_NATURAL);
-
-
+// Read options
 if (isset($options['options']))
 	$myOptions=$options['options'];
 else
@@ -85,7 +65,7 @@ if (!isset($options['mode']))
 	$options['mode']="default";
 
 if (!isset($options['position']))
-	$position="uk-width-1-2 uk-container-center";
+	$position="uk-width-1-1 uk-container-center";
 else
 	$position=$options['position'];
 
@@ -98,6 +78,39 @@ if (!isset($options['options']))
 	$myOptions="";
 else
 	$myOptions=$options['options'];
+	
+if (isset($options['indicators']))
+	$indicators=$options['indicators'];
+	
+if (isset($options['thumbsize']))
+	$thumbWidth=$options['thumbsize'];
+	
+	
+$imageDir = $options['dir'] . "/";  // must end with a slash
+$resizeDir = $options['dir'] . "/thumbs-$imageSize/";  // must end with a slash
+$thumbDir = $imageDir . "thumbs-$thumbWidth/"; // must end with a slash
+
+// Remove thumbails if size has changed
+if (!is_dir($pagekit_root . $thumbDir) || !is_dir($pagekit_root . $resizeDir))
+	deleteThumbnails($pagekit_root . $options['dir']);
+	
+$dir = new DirectoryIterator($pagekit_root .$imageDir);
+@mkdir ($pagekit_root . $thumbDir);
+@mkdir ($pagekit_root . $resizeDir);
+
+$FoundFiles = array();
+
+foreach ($dir as $fileinfo) {
+    if ($fileinfo->isFile() && !$fileinfo->isDot()) {
+		if (!file_exists($pagekit_root . $thumbDir . "/". $fileinfo->getFilename())) {
+			resize_image($pagekit_root . $imageDir . "/" . $fileinfo->getFilename(),  $pagekit_root .$resizeDir . $fileinfo->getFilename(), $imageSize, $imageSize, $jpgQuality, null);
+			resize_thumb($pagekit_root . $imageDir . "/" .$fileinfo->getFilename(),  $pagekit_root . $thumbDir . "/" . $fileinfo->getFilename(), $thumbWidth, $thumbWidth, $jpgQuality,null);
+		}
+		$FoundFiles[] = $fileinfo->getFilename();
+	}
+}
+
+asort($FoundFiles, $sort_flag=SORT_NATURAL);
 
 
 switch ($options['mode']) {
@@ -123,7 +136,7 @@ EOT;
 			$pos = strrpos($str, "/") +1;
 			$res = substr($str, 0, $pos) . htmlentities(substr($str, $pos));
 
-    		echo "<a href='storage/Images/$thumbDir-large/$res'></a>\n";
+    		echo "<a href='storage/Images/$resizeDir/$res'></a>\n";
 
 		}
 		echo "</div></div>";
@@ -140,9 +153,13 @@ EOT;
     		<a class="next">›</a>
     		<a class="close">×</a>
     		<a class="play-pause"></a>
-    		<ol class="indicator"></ol>
-		</div>
 EOT;
+
+		if (!strcmp($indicators, "true"))
+			echo '<ol class="indicator"></ol>';
+		else
+			echo '<olno class="indicator"></olno>';
+		echo "</div>";
 
 		echo ("<div id ='links_$ran'>");
 
@@ -152,12 +169,17 @@ EOT;
 			$pos = strrpos($str, "/") +1;
 			$res = substr($str, 0, $pos) . htmlentities(substr($str, $pos));
 
-    		echo "<a href='storage/Images/$thumbDir-large/$res'>\n";
+    		echo "<a href='storage/Images/$resizeDir/$res'>\n";
     		echo "<img src='storage/Images/$thumbDir/$res'>\n";
     		echo "</a>";
 		}
 		echo "</div>";
-}
+};
+
+// Disable fullscreen for Chrome
+if (strpos($_SERVER['HTTP_USER_AGENT'], 'Chrome') !== FALSE || strpos($_SERVER['HTTP_USER_AGENT'], 'CriOS') !== false) 
+	$fullScreen="false";
+	
 ?>
 
 <script>
@@ -182,7 +204,7 @@ blueimp.Gallery(document.getElementById('links_<?php echo $ran;?>').getElementsB
     	closeOnEscape: false,
     	closeOnSlideClick: false,
     	closeOnSwipeUpOrDown: false,
-    	disableScroll: false,
+    	disableScroll: true,
     	startSlideshow: true,
         slideshowInterval: <?php echo $duration; ?>
 	}

@@ -1,6 +1,29 @@
 # Changelog
 
 =======
+
+## 1.0.12 (September 26, 2018)
+
+### Add
+- Thumbsnails now square. Size can be specified . Use option "thumbsize":"64" to set it to 64px. 
+  Default is 80px. Note: If you use the SAME gallery multiple times, specify the same size as
+  the systems only keeps one set of thumbnails.
+
+## 1.0.11 (September 26, 2018)
+
+### Add
+- Mini previews for lightbox. Use option "indicators":"false" to turn off, on by default.
+
+## 1.0.10 (September 26, 2018)
+
+### Changes
+- Disabled fullscreen option for Chrome
+
+## 1.0.9 (September 26, 2018)
+
+### Changes
+- Corrected thumbnail creation (non-jpg)
+
 ## 1.0.8 (September 26, 2018)
 
 ### Add

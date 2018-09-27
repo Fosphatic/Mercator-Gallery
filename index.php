@@ -68,6 +68,7 @@ return [
       'site' => function ($event, $app) {
             $app->on('view.content', function ($event, $test) use ($app) {
             $app['styles']->add('mercator-css' , 'mercator/gallery:assets/css/blueimp-gallery.css');
+            $app['styles']->add('mercator-indicator' , 'mercator/gallery:assets/css/blueimp-gallery-indicator.css');
             });
       }
    ]

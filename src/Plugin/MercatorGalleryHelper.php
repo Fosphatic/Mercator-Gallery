@@ -91,8 +91,82 @@ function resize_image($src , $dest , $toWidth , $toHeight , $jpgQuality, $option
 	return true;
 }
 
-
 function resize_thumb($src , $dest , $toWidth , $toHeight , $jpgQuality, $options = array()) 
+{
+		if(!file_exists($src))
+	{
+		die("$src file does not exist");
+	}
+	
+	//OPEN THE IMAGE INTO A RESOURCE
+	$img = @imagecreatefromjpeg ($src);	//try jpg
+	
+	if(!$img)
+	{
+		$img = @imagecreatefromgif ($src);	//try gif
+	}
+	
+	if(!$img)
+	{
+		$img = @imagecreatefrompng ($src);	//try png
+	}
+	
+	if(!$img)
+	{
+		return false;
+		die("Could not create image resource $src");
+	}
+	
+	//ORIGINAL DIMENTIONS
+	list( $width , $height ) = getimagesize( $src );
+	
+	//ORIGINAL SCALE
+	$xscale=$width/$toWidth;
+	$yscale=$height/$toHeight;
+	
+	//NEW DIMENSIONS WITH SAME SCALE
+	if ($yscale > $xscale) 
+	{
+		$new_width = round($width * (1/$yscale));
+		$new_height = round($height * (1/$yscale));
+	}
+	else 
+	{
+		$new_width = round($width * (1/$xscale));
+		$new_height = round($height * (1/$xscale));
+	}
+	
+	if ($new_height > $toHeight) {
+		$scale=$toHeight/$new_height;
+		$new_width=$new_width/$scale;
+		$new_height=$new_height/$scale;
+	}
+	else {
+		$scale=$toHeight/$new_height;
+		$new_width=$new_width*$scale;
+		$new_height=$new_height*$scale;
+	};
+		
+	
+	
+	//RESIZE IMAGE
+	$imageResized=imagescale($img,  $toWidth, $toWidth);
+	
+	//STORE IMAGE INTO DESTINATION
+	if(! imagejpeg($imageResized , $dest, $jpgQuality))
+	{
+		die("Could not save new file");
+	}
+	
+	//Free the memory
+	imagedestroy($img);
+	imagedestroy($imageResized);
+	
+	return true;
+	
+}
+
+function resize_thumb_old($src , $dest , $toWidth , $toHeight , $jpgQuality, $options = array()) 
 {
 		if(!file_exists($src))
 	{
@@ -165,6 +239,16 @@ function resize_thumb($src , $dest , $toWidth , $toHeight , $jpgQuality, $option
 	
 	return true;
 	
+}
+
+function deleteThumbnails($dirname) {
+
+	$dirs=glob("$dirname/thumbs*");
+	foreach ($dirs as $dir) { 
+  		array_map("unlink", glob("$dir/*"));
+  		if (is_dir($dir))
+  			rmdir($dir);
+  	}
 }
 
 ?>
